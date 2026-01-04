@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Next Ventures Ocean Blue Theme - Based on coolors.co palette */
+    --background: 200 100% 98%;
+    --foreground: 215 100% 19%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 100% 19%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 100% 19%;
+
+    /* Primary: Deep Ocean Blue (#03045e to #0077b6) */
+    --primary: 215 97% 35%;        /* #0077b6 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 195 100% 50%; /* #00b4d8 */
+    --primary-dark: 239 97% 19%;   /* #03045e */
+
+    /* Accent: Warm Orange for CTAs and highlights */
+    --accent: 27 96% 61%;          /* #F59E0B - Warm amber/orange */
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 25 95% 53%;    /* #F97316 - Deeper orange */
+
+    --secondary: 193 100% 96%;
+    --secondary-foreground: 215 100% 19%;
+
+    --muted: 193 100% 96%;
+    --muted-foreground: 215 72% 32%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 193 82% 89%;         /* #ade8f4 */
+    --input: 193 82% 89%;
+    --ring: 215 97% 35%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens - Ocean Blue Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(215, 97%, 35%) 0%, hsl(195, 100%, 50%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(200, 100%, 98%) 0%, hsl(193, 100%, 96%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(193, 100%, 98%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(215, 97%, 35%) 0%, hsl(193, 100%, 42%) 100%);
+    
+    /* Ocean-themed shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(215 97% 35% / 0.03);
+    --shadow-md: 0 4px 6px -1px hsl(215 97% 35% / 0.05), 0 2px 4px -2px hsl(215 97% 35% / 0.05);
+    --shadow-lg: 0 10px 25px -3px hsl(215 97% 35% / 0.08), 0 4px 10px -4px hsl(215 97% 35% / 0.04);
+    --shadow-xl: 0 20px 40px -8px hsl(215 97% 35% / 0.12);
+    --shadow-glow: 0 0 40px hsl(215 97% 35% / 0.15);
+    --shadow-cta: 0 8px 24px hsl(215 97% 35% / 0.35);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Additional palette colors */
+    --ocean-deep: 239 97% 19%;     /* #03045e */
+    --ocean-dark: 213 97% 27%;     /* #023e8a */
+    --ocean-medium: 195 100% 42%;  /* #0096c7 */
+    --ocean-light: 192 91% 56%;    /* #48cae4 */
+    --ocean-lighter: 193 82% 75%;  /* #90e0ef */
+    --ocean-lightest: 193 82% 89%; /* #ade8f4 */
+    --ocean-pale: 193 82% 94%;     /* #caf0f8 */
+
+    /* Sidebar defaults */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 215 97% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 193 100% 96%;
+    --sidebar-accent-foreground: 215 100% 19%;
+    --sidebar-border: 193 82% 89%;
+    --sidebar-ring: 215 97% 35%;
+  }
+
+  .dark {
+    --background: 239 97% 8%;
+    --foreground: 193 82% 94%;
+
+    --card: 239 97% 11%;
+    --card-foreground: 193 82% 94%;
+
+    --popover: 239 97% 11%;
+    --popover-foreground: 193 82% 94%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 239 97% 19%;
+
+    --secondary: 215 72% 18%;
+    --secondary-foreground: 193 82% 94%;
+
+    --muted: 215 72% 18%;
+    --muted-foreground: 193 82% 75%;
+
+    --accent: 192 91% 56%;
+    --accent-foreground: 239 97% 19%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 193 82% 94%;
+
+    --border: 215 72% 18%;
+    --input: 215 72% 18%;
+    --ring: 195 100% 50%;
+
+    --sidebar-background: 239 97% 10%;
+    --sidebar-foreground: 193 82% 94%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 239 97% 19%;
+    --sidebar-accent: 215 72% 18%;
+    --sidebar-accent-foreground: 193 82% 94%;
+    --sidebar-border: 215 72% 18%;
+    --sidebar-ring: 195 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-cta {
+    background: var(--gradient-cta);
+  }
+
+  .gradient-surface {
+    background: var(--gradient-surface);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-cta {
+    box-shadow: var(--shadow-cta);
+  }
+
+  /* Ocean palette utilities */
+  .bg-ocean-deep { background-color: hsl(var(--ocean-deep)); }
+  .bg-ocean-dark { background-color: hsl(var(--ocean-dark)); }
+  .bg-ocean-medium { background-color: hsl(var(--ocean-medium)); }
+  .bg-ocean-light { background-color: hsl(var(--ocean-light)); }
+  .bg-ocean-lighter { background-color: hsl(var(--ocean-lighter)); }
+  .bg-ocean-lightest { background-color: hsl(var(--ocean-lightest)); }
+  .bg-ocean-pale { background-color: hsl(var(--ocean-pale)); }
+
+  .text-ocean-deep { color: hsl(var(--ocean-deep)); }
+  .text-ocean-dark { color: hsl(var(--ocean-dark)); }
+  .text-ocean-medium { color: hsl(var(--ocean-medium)); }
+  .text-ocean-light { color: hsl(var(--ocean-light)); }
+
+  .border-ocean-lightest { border-color: hsl(var(--ocean-lightest)); }
+  .border-ocean-pale { border-color: hsl(var(--ocean-pale)); }
+}
+
+/* Animation keyframes */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(215 97% 35% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(215 97% 35% / 0.5);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+.delay-900 { animation-delay: 900ms; }
+.delay-1000 { animation-delay: 1000ms; }
