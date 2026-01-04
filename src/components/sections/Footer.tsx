@@ -135,7 +135,7 @@ const Footer = () => {
             </p>
             <p className="text-primary-foreground/60 text-sm flex items-center gap-2">
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
-              Based in Ujjain, Madhya Pradesh, India
+              Based in Indore, Madhya Pradesh, India
             </p>
           </div>
         </motion.div>

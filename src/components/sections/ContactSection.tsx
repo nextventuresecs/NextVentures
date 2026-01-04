@@ -30,7 +30,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: "Address",
-      content: "Ujjain, Madhya Pradesh, India",
+      content: "Indore, Madhya Pradesh, India",
     },
     {
       icon: Phone,
