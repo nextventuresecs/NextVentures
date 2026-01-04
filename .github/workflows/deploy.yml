@@ -27,13 +27,6 @@ jobs:
 
       - name: Verify build output
         run: test -d dist && test -f dist/index.html
-
-      
-      - name: Confirm remote path
-        run: |
-            ssh -o StrictHostKeyChecking=no \
-            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_IP }} \
-            "ls -lah /home/${{ secrets.HOSTINGER_USER }}/public_html | head"
     
       - name: Deploy to Hostinger
         uses: easingthemes/ssh-deploy@v4
