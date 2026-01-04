@@ -19,5 +19,3 @@ A modern, scalable web application built with cutting-edge technologies to empow
 
 - **Node.js** (v18 or higher) - [Install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 - **npm** or **bun** package manager
-
-- npm run build
