@@ -36,5 +36,5 @@ jobs:
           REMOTE_USER: ${{ secrets.HOSTINGER_USER }}
           REMOTE_PORT: ${{ secrets.HOSTINGER_PORT }}
           SOURCE: dist/
-          TARGET: public_html/
+          TARGET: ${{ secrets.HOSTINGER_TARGET_ROOT }}
           ARGS: "-avz --delete"
