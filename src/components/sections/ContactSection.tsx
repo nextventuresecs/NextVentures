@@ -35,8 +35,8 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: "Phone",
-      content: "+91 7987613099",
-      href: "tel:+917987613099",
+      content: "+91 8818887785",
+      href: "tel:+918818887785",
     },
     {
       icon: Mail,
@@ -115,7 +115,7 @@ const ContactSection = () => {
                   <Input
                     id="name"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Adhyant Patil"
                     required
                     className="h-12"
                   />
@@ -138,7 +138,7 @@ const ContactSection = () => {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="info@nextventures.in"
                     required
                     className="h-12"
                   />
@@ -149,7 +149,7 @@ const ContactSection = () => {
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 88188 87785"
                     required
                     className="h-12"
                   />
