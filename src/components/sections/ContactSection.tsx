@@ -179,7 +179,6 @@ const ContactSection = () => {
                   id="message"
                   name="message"
                   placeholder="Tell us about your project or requirements..."
-                  required
                   className="min-h-[120px] resize-none"
                 />
               </div>
