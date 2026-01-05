@@ -174,7 +174,7 @@ const ContactSection = () => {
               </div>
 
               <div className="space-y-2 mb-8">
-                <Label htmlFor="message">Your Message *</Label>
+                <Label htmlFor="message">Your Message </Label>
                 <Textarea
                   id="message"
                   name="message"
