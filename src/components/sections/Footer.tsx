@@ -1,9 +1,64 @@
 import { motion, useInView } from "framer-motion";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://cms.nextventures.in/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          source: 'footer_newsletter', // Optional: Track source
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to subscribe. Please try again.');
+      }
+
+      const result = await response.json();
+      if (result.success) {
+        toast({
+          title: "Subscribed!",
+          description: "Thank you for subscribing to our newsletter.",
+        });
+        setEmail(''); // Reset input
+      } else {
+        throw new Error('Unexpected response from server.');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const quickLinks = [
     { label: "About Us", href: "#about" },
     { label: "Services", href: "#services" },
@@ -59,19 +114,21 @@ const Footer = () => {
             {/* Newsletter */}
             <div>
               <h4 className="font-semibold mb-3">Subscribe to Newsletter</h4>
-              <div className="flex gap-2">
+              <form onSubmit={handleSubmit} className="flex gap-2">
                 <Input
                   type="email"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 h-10 w-80"
                 />
-                <Button variant="cta" size="default">
-                  <ArrowRight className="w-4 h-4" />
+                <Button type="submit" variant="cta" size="default" disabled={isSubmitting}>
+                  {isSubmitting ? "Subscribing..." : <ArrowRight className="w-4 h-4" />}
                 </Button>
+                </form>
               </div>
             </div>
-          </div>
-
+          
           {/* Quick Links */}
           <div>
             <h4 className="font-heading font-semibold text-lg mb-6">Quick Links</h4>
