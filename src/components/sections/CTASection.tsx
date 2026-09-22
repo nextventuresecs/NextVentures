@@ -127,7 +127,7 @@ const CTASection = () => {
                 className="border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 rounded-full px-10 py-6 text-lg font-semibold transition-all duration-300 group"
                 asChild
               >
-                <a href="tel:+917987613099" className="flex items-center gap-3" aria-label="Call us now">
+                <a href="tel:+918818887785" className="flex items-center gap-3" aria-label="Call us now">
                   <Phone className="w-6 h-6 group-hover:rotate-12 transition-transform" />
                   Call Now
                 </a>

@@ -84,20 +84,6 @@ const ContactSection = () => {
     }
   };
 
-
-    
-  //   // Simulate form submission
-  //   await new Promise(resolve => setTimeout(resolve, 1000));
-    
-  //   toast({
-  //     title: "Message Sent!",
-  //     description: "We'll get back to you within 24 hours.",
-  //   });
-    
-  //   setIsSubmitting(false);
-  //   (e.target as HTMLFormElement).reset();
-  // };
-
   const contactInfo = [
     {
       icon: MapPin,
@@ -107,14 +93,14 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: "Phone",
-      content: "+91 8818887785",
+      content: "+91 88188 87785",
       href: "tel:+918818887785",
     },
     {
       icon: Mail,
       title: "Email",
-      content: "info@nextventures.in",
-      href: "mailto:info@nextventures.in",
+      content: "contact@nextventures.in",
+      href: "mailto:contact@nextventures.in",
     },
   ];
 
@@ -214,7 +200,7 @@ const ContactSection = () => {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="info@nextventures.in"
+                    placeholder="contact@nextventures.in"
                     required
                     value={formData.email}
                     onChange={handleInputChange}

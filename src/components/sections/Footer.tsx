@@ -101,10 +101,23 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
-                <img src="/favicon.png" alt="Next Ventures" className="w-full h-full" />
-              </div>
-              <span className="font-heading font-bold text-4xl">Next Ventures</span>
+              <a href="#" aria-label="Next Ventures Home" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105">
+                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-1.5 shadow-sm">
+                  <img 
+                    src="/nvces-logo.svg" 
+                    alt="Next Ventures Logo" 
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      // Prevent infinite loop if fallback image also fails
+                      e.currentTarget.onerror = null;
+                      (e.target as HTMLImageElement).src = "/nvces logo-512w.png";
+                    }}
+                  />
+                </div>
+                <span className="font-heading font-bold text-3xl text-primary-foreground tracking-tight">
+                  Next Ventures
+                </span>
+              </a>
             </div>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
               Professional consultancy firm providing comprehensive business development, 

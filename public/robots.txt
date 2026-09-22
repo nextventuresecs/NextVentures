@@ -1,3 +1,4 @@
+# User-agent directives for search crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +11,30 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+# Directives for AI search & answer engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 User-agent: *
 Allow: /
+
+# Sitemap link
+Sitemap: https://nextventures.in/sitemap.xml
