@@ -38,7 +38,7 @@ const Header = () => {
       label: "Resources", 
       dropdown: [
         { href: "#case-studies", label: "Case Studies" },
-        { href: "#blog", label: "Blog" }
+        { href: "#faq", label: "FAQ & Insights" }
       ]
     },
     { href: "#contact", label: "Contact" },
@@ -59,14 +59,22 @@ const Header = () => {
           {/* Logo */}
           <a 
             href="#" 
-            className="relative z-10 transition-transform duration-300 hover:scale-105"
+            className="relative z-10 flex items-center gap-3 transition-transform duration-300 hover:scale-105"
             aria-label="Next Ventures Home"
           >
             <img 
-              src="/logo.png" 
+              src="/nvces-logo.svg" 
               alt="Next Ventures" 
-              className={`${isScrolled ? "h-16" : "h-20"} w-auto object-contain`}
+              className={`${isScrolled ? "h-12" : "h-14"} w-auto object-contain`}
+              onError={(e) => {
+                // Prevent infinite loop if fallback image also fails
+                e.currentTarget.onerror = null;
+                (e.target as HTMLImageElement).src = "/nvces logo-512w.png";
+              }}
             />
+            <span className="font-heading font-bold text-xl md:text-2xl text-ocean-dark tracking-tight">
+              Next Ventures
+            </span>
           </a>
 
           {/* Desktop Navigation - Centered */}

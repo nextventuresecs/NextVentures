@@ -64,7 +64,7 @@ const RefundPolicy = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-foreground mb-4">3. Refund Process</h2>
               <p>
-                Contact us at refunds@nextventures.com with your order details. Refunds are processed within 10-14 business days.
+                Contact us at contact@nextventures.in with your order details. Refunds are processed within 10-14 business days.
               </p>
             </section>
 

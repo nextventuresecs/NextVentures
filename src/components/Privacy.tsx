@@ -81,7 +81,7 @@ const PrivacyPolicy = () => {
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-foreground mb-4">5. Your Rights</h2>
-              <p>You have the right to access, update, or delete your data. Contact us at privacy@nextventures.com.</p>
+              <p>You have the right to access, update, or delete your data. Contact us at contact@nextventures.in.</p>
             </section>
 
             <section className="mb-8">
