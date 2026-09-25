@@ -34,7 +34,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.HOSTINGER_IP }}
           REMOTE_USER: ${{ secrets.HOSTINGER_USER }}
-          REMOTE_PORT: ${{ secrets.HOSTINGER_PORT }}
+          REMOTE_PORT: ${{ secrets.HOSTINGER_PORT || '65002' }}
           SOURCE: dist/
           TARGET: ${{ secrets.HOSTINGER_TARGET_ROOT }}
           ARGS: "-avz --delete"
