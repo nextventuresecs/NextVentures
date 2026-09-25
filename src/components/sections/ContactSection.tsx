@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { ENDPOINTS } from "@/config/api";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -34,7 +35,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://cms.nextventures.in/api/contact', {
+      const response = await fetch(ENDPOINTS.CONTACT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
