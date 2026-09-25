@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { CMS_API_URL } from "@/config/api";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +38,8 @@ const Header = () => {
     { 
       label: "Resources", 
       dropdown: [
-        { href: "#case-studies", label: "Case Studies" },
+        { href: `${CMS_API_URL}/blog`, label: "Blog" },
+        { href: `${CMS_API_URL}/case-studies`, label: "Case Studies" },
         { href: "#faq", label: "FAQ & Insights" }
       ]
     },

@@ -1,40 +1,62 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";  // Import the provided hook
 import { useToast } from "@/hooks/use-toast";  // Import the provided hook
 import { ArrowRight, TrendingUp, Users, Calendar, Share2 } from "lucide-react";
+import { ENDPOINTS } from "@/config/api";
+
+const DEFAULT_CASE_STUDIES = [
+  {
+    id: 1,
+    title: "NGO Digital Transformation",
+    description: "Helped a local NGO streamline operations with custom ERP, increasing efficiency by 40%.",
+    image: "/case-study-1.jpg",
+    metrics: { growth: "40% Efficiency", clients: "500+ Beneficiaries", duration: "6 Months" },
+    link: ENDPOINTS.CASE_STUDIES_PAGE,
+  },
+  {
+    id: 2,
+    title: "MSME Compliance & Growth",
+    description: "Provided end-to-end compliance solutions for a startup, securing funding and scaling to 200 employees.",
+    image: "/case-study-2.jpg",
+    metrics: { growth: "300% Revenue", clients: "200 Employees", duration: "1 Year" },
+    link: ENDPOINTS.CASE_STUDIES_PAGE,
+  },
+  {
+    id: 3,
+    title: "Educational Institution Consultancy",
+    description: "Optimized HR and digital tools for a college, improving student enrollment by 25%.",
+    image: "/case-study-3.jpg",
+    metrics: { growth: "25% Enrollment", clients: "1000+ Students", duration: "8 Months" },
+    link: ENDPOINTS.CASE_STUDIES_PAGE,
+  },
+];
 
 const CaseStudiesSection = () => {
-  const { toast } = useToast();  // Use the toast hook for notifications
-  const isMobile = useIsMobile();  // Use the mobile hook for responsive logic
+  const { toast } = useToast();
+  const isMobile = useIsMobile();
+  const [caseStudies, setCaseStudies] = useState(DEFAULT_CASE_STUDIES);
 
-  const caseStudies = [
-    {
-      id: 1,
-      title: "NGO Digital Transformation",
-      description: "Helped a local NGO streamline operations with custom ERP, increasing efficiency by 40%.",
-      image: "/case-study-1.jpg",  // Placeholder; replace with real image
-      metrics: { growth: "40% Efficiency", clients: "500+ Beneficiaries", duration: "6 Months" },
-      link: "#case-1",
-    },
-    {
-      id: 2,
-      title: "MSME Compliance & Growth",
-      description: "Provided end-to-end compliance solutions for a startup, securing funding and scaling to 200 employees.",
-      image: "/case-study-2.jpg",
-      metrics: { growth: "300% Revenue", clients: "200 Employees", duration: "1 Year" },
-      link: "#case-2",
-    },
-    {
-      id: 3,
-      title: "Educational Institution Consultancy",
-      description: "Optimized HR and digital tools for a college, improving student enrollment by 25%.",
-      image: "/case-study-3.jpg",
-      metrics: { growth: "25% Enrollment", clients: "1000+ Students", duration: "8 Months" },
-      link: "#case-3",
-    },
-  ];
+  useEffect(() => {
+    const fetchCaseStudies = async () => {
+      try {
+        const response = await fetch(ENDPOINTS.CASE_STUDIES);
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setCaseStudies(data);
+          } else if (data.data && Array.isArray(data.data) && data.data.length > 0) {
+            setCaseStudies(data.data);
+          }
+        }
+      } catch {
+        // Fall back to default static items if API is unavailable
+      }
+    };
+
+    fetchCaseStudies();
+  }, []);
 
   // Framer Motion variants
   const containerVariants = {
@@ -201,7 +223,7 @@ const CaseStudiesSection = () => {
             className="gradient-cta text-accent-foreground rounded-full px-8 py-6 text-base font-semibold shadow-gold hover:shadow-cta hover:scale-105 transition-all duration-300 group"
             asChild
           >
-            <a href="#contact" className="flex items-center gap-2" aria-label="View all case studies">
+            <a href={ENDPOINTS.CASE_STUDIES_PAGE} className="flex items-center gap-2" aria-label="View all case studies">
               View All Case Studies
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </a>

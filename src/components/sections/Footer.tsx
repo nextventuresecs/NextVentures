@@ -4,6 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { CMS_API_URL, ENDPOINTS } from "@/config/api";
 
 const Footer = () => {
   const { toast } = useToast();
@@ -23,7 +24,7 @@ const Footer = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://cms.nextventures.in/api/subscribe', {
+      const response = await fetch(ENDPOINTS.SUBSCRIBE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,6 +65,8 @@ const Footer = () => {
     { label: "Services", href: "#services" },
     { label: "Industries", href: "#industries" },
     { label: "Why Us", href: "#why-us" },
+    { label: "Blog", href: `${CMS_API_URL}/blog` },
+    { label: "Case Studies", href: `${CMS_API_URL}/case-studies` },
     { label: "Contact", href: "#contact" },
   ];
 
